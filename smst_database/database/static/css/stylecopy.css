@@ -1,0 +1,30 @@
+.header {
+    padding: 30px;
+    background-color: #CCC;
+    color: #FFF;
+}
+
+.menu {
+    background-color: #CCC;
+    color: red;
+}
+
+.menu ul li {
+    float: left;
+    padding: 6px 7px;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu ul li:hover {
+    background-color: gray;
+    color: yellow;
+}
+
+.menu:after {
+    clear: both;
+    display: table;
+    content: "";
+}

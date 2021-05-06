@@ -1,0 +1,10 @@
+{% extends 'pages/base_1.html'%}
+{% block content1%}
+    {% if dslistinapp %} 
+        {% for item in dslistinapp  %}
+            <a href="{% url 'details_appl' item.id %}"><p>{{item.Descriptions}}</p></a>
+        {% endfor %}
+    {% else %}
+        <h3 style="color:red;">  Không có dữ liệu !!!</h3>      
+    {% endif %}
+{% endblock %}

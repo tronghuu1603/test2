@@ -1,0 +1,254 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Database</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'templates.css' %}">
+    <script src="https://kit.fontawesome.com/8e392b82b2.js" crossorigin="anonymous"></script>
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+    <style type="text/css">
+        
+        th, td{
+            text-align:left;
+            padding:10px;
+        }
+        table tr:nth-child(odd){
+            background-color:#FFEFD5;
+        }
+        table tr:nth-child(even){
+            background-color:white;
+        }
+    </style>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    {% load static %}
+    <a href="/"><img src="{% static 'images/logo.svg' %}"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+      {% if perms.auth.delete_user %}
+      <form class="form-inline my-2 my-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Databases</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item"            href="/list">Total Databases</a>
+              <a class="dropdown-item disabled"   href="/filter">ASO Configuration</a>
+              <a class="dropdown-item"            href="/compare">Compare </a>
+              <a class="dropdown-item"            href="/copy">Intelligence Copy Project</a>
+            </div>
+        </li>
+        <li>
+          <button type="button" class="btn btn-dark text-blue" data-toggle="modal" data-target="#exampleModal_3">
+          Log out
+          </button>
+        </li>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log out</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Do you want to log out this user?
+              </div>
+              <div class="modal-footer">
+                <a href="/logout"><button type="button" class="btn btn-primary" >YES</button></a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <li class="nav-item">
+          <a class="nav-link" href="/signin">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Admin</a>
+        </li>
+        <li>
+          <a class="nav-item nav-link disabled" href="#">Welcome {{user.username}}</a>
+        </li>
+      </form>
+      {% elif user.username %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Databases</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item"            href="/list">Total Databases</a>
+            <a class="dropdown-item disabled"   href="/filter">ASO Configuration</a>
+            <a class="dropdown-item"            href="/compare">Compare </a>
+          </div>
+      </li>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <li>
+          <button type="button" class="btn btn-dark text-blue" data-toggle="modal" data-target="#exampleModal_4">
+          Log out
+          </button>
+        </li>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal_4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log out</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Do you want to log out this user?
+              </div>
+              <div class="modal-footer">
+                <a href="/logout"><button type="button" class="btn btn-primary" >YES</button></a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <li>
+          <a class="nav-item nav-link disabled" href="#"> Welcome {{user.username}}</a>
+        </li>
+      </form>
+      {% else %}
+      <form class="form-inline my-2 my-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Log in</a>
+        </li>
+      </form>
+      {% endif %}
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="total">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    
+  </div>
+</nav>
+
+<main role="main" class="container">
+<br>
+<br>
+<br>
+<br>
+  <h3>Filter Database</h3>
+
+  
+  <form method="GET" action=".">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <div class="input-group">
+                <input class="form-control py-2 border-right-0 border" type="search" name="total" placeholder="Project or Customer..." />
+                <span class="input-group-append">
+                    <div class="input-group-text bg-transparent">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </span>
+            </div>
+        </div>        
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputState">Product</label>
+            <select id="inputState" class="form-control" name="product">
+                <option selected>Choose...</option>
+                {% for pro in products %}
+                  <option value="{{ pro }}">{{ pro }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">Category</label>
+            <select id="inputState" class="form-control" name="category">
+                <option selected>Choose...</option>
+                {% for cat in categories %}
+                  <option value="{{ cat }}">{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">Item</label>
+            <select id="inputState" class="form-control" name="item">
+                <option selected>Choose...</option>
+                {% for item in Item %}
+                  <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a href="/filter" class="btn btn-primary">Reload</a>
+  </form>
+  <br>
+  <br>
+  <h6>{{n}} result(s)</h6>
+  <hr />
+          <div class="card card-body">
+					<table class="table table-hover">
+            <thead class="thead-dark">
+						<tr>
+							<th><strong>Project</strong></th>
+							<th><b>Customer</b></th>
+              <th><b>Product</b></th>
+							<th><b>Category</b></th>
+							<th><b>Item</b></th>
+							<th><b>Value</b></th>
+              <th><b>Comments</b></th>
+              <th><b>Date</b></th>
+						</tr>
+            </thead>
+						{% for data in queryset %}
+							<tr>
+								<td>{{ data.Project }}</td>
+                <td>{{ data.Customer }}</td>
+								<td>{{ data.Product }}</td>
+								<td>{{ data.Value.Category }}</td>
+								<td>{{ data.Value.Item }}</td>
+								<td>{{ data.Value.Value }}</td>
+                <td>{{ data.Comments }}</td>
+                <td>{{ data.date }}</td>
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+          <hr />
+        
+
+
+</main><!-- /.container -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>

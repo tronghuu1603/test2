@@ -1,0 +1,92 @@
+{% extends 'pages/main.html' %}
+
+{% block content %}
+
+{% include 'pages/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-2">
+		<h5>LU_Products</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+				<tr>
+					<th>Product</th>
+				</tr>
+				</thead>
+				{% for pro in Product %}
+					<tr>
+						<td>{{pro.Product}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<h5>LU_Category</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+				<tr>
+					<th>Category</th>
+				</tr>
+				</thead>
+				{% for cat in LU_Category %}
+					<tr>
+						<td>{{cat.Category}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<h5>LU_Items</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+				<tr>
+					<th>Item</th>
+				</tr>
+				</thead>
+				{% for item in LU_Item %}
+					<tr>
+						<td>{{item.Item}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-5">
+		<h5>LU_Values</h5>
+		<hr>
+			<div class="card card-body">
+				<table class="table table-hover">
+					<thead class="thead-dark">
+					<tr>
+						<th>Category</th>
+						<th>Item</th>
+						<th>Value</th>
+					</tr>
+					</thead>
+					{% for value in LU_Value %}
+						<tr>
+							<td>{{value.Category}}</td>
+							<td>{{value.Item}}</td>
+							<td>{{value.Value}}</td>
+						</tr>
+					{% endfor %}
+
+			
+				</table>
+			</div>
+	</div>
+</div>
+
+{% endblock %}
+
